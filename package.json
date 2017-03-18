@@ -1,0 +1,28 @@
+{
+  "name": "magic-prawns",
+  "version": "1.0.0",
+  "description": "User submitted database for dishes they like in the restaurants",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mullun/magic-prawns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mullun/magic-prawns/issues"
+  },
+  "homepage": "https://github.com/mullun/magic-prawns#readme"
+}
