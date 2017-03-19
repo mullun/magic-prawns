@@ -1,0 +1,14 @@
+/* Site Variables */
+
+// This is the base font size and a variable in which all other sizes should be based on.
+
+// rem is used instead of em because rem always bases itself off the page declared font-size
+// em bases itself off of the font-size of the element (it uses inhertiance and thus is harder to predict)
+$rem-base:  18px;
+
+// Branding Colors
+
+$brand-primary: #4AAAA5;
+$brand-secondary: #4A97DD;
+
+// Typography
