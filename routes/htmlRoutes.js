@@ -1,11 +1,13 @@
 var express = require("express");
 var router = express.Router();
 
-var Dish = require("../models/dish.js")
+var db = require("../models")
 
-app.get("/", function(req, res){
-	var hbsObject = {
-		Dish: data
-	};
-	res.render("index", hbsObject);
-});
+module.exports = function(app){
+	app.get("/", function(req, res){
+		var hbsObject = {
+			Dish: data
+		};
+		res.render("index", hbsObject);
+	});
+};
