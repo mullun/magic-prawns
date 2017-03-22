@@ -7,11 +7,14 @@
 
     <title>Magic Prawns</title>
 
+    <!-- Reset CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles -->
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
 </head>
 <body>
@@ -30,14 +33,27 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#saved">Saved</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id = "new">New</a></li>
+            <li><a href="#saved" class = "btn btn-default" id = "login">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    {{{ body }}}
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="copyright">Copyright &copy; MagicPrawns 2017</span>
+                </div>
+            </div>
+        </div>
+    </footer> <!-- ./footer-->
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
