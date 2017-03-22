@@ -1,12 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    user_name : {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
+  },
     {
       // We're saying that we want our Author to have Posts
       classMethods: {
@@ -20,6 +21,6 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     }
-  });
-  return Post;
+  );
+  return User;
 };
