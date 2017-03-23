@@ -1,9 +1,61 @@
 /* Site Variables */
-/* line 3, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
-.test {
-  height: 200px;
-  width: 200px;
-  background-color: blue;
+/* line 19, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_variables.scss */
+* {
+  box-sizing: border-box;
+  /* for debugging*/
+  outline-style: dotted;
+  outline-color: orange;
+}
+
+/* line 4, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.masthead {
+  text-align: center;
+  color: #fff;
+  background-color: #111111;
+}
+
+/* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.header {
+  top: 0;
+  left: 0;
+  color: #fff;
+  height: 100px;
+  padding: 0 42px;
+}
+
+/* line 8, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  position: relative;
+  height: 100px;
+  background-color: #100c0a;
+  color: #fff;
+  line-height: 99px;
+}
+
+/* line 19, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar .navbar-nav li a {
+  text-transform: uppercase;
+  line-height: 63px;
+}
+
+/* line 27, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar-default {
+  border: none;
+}
+
+@media (min-width: 768px) {
+  /* line 33, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+  .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  /* line 39, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=../css/style.map */

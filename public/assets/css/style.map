@@ -13,14 +13,14 @@
 	],
 	"sourcesContent": [
 		"@charset 'utf-8';\r\n\r\n// 1. Configuration and helpers\r\n@import\r\n\t'variables',\r\n\t'utils';\r\n\r\n// 2. Vendors\r\n\r\n\r\n// 3. Base stuff\r\n@import\r\n\t'content';\r\n\r\n// 4. Layout-related sections\r\n@import \r\n\t'header',\r\n\t'nav',\r\n\t'footer';\r\n\r\n//5. Forms\r\n@import \r\n\t'forms';",
-		"/* Site Variables */\r\n\r\n// This is the base font size and a variable in which all other sizes should be based on.\r\n\r\n// rem is used instead of em because rem always bases itself off the page declared font-size\r\n// em bases itself off of the font-size of the element (it uses inhertiance and thus is harder to predict)\r\n$rem-base:  18px;\r\n\r\n// Branding Colors\r\n\r\n$brand-primary: #4AAAA5;\r\n$brand-secondary: #4A97DD;\r\n\r\n// Typography",
+		"/* Site Variables */\r\n\r\n// This is the base font size and a variable in which all other sizes should be based on.\r\n\r\n// rem is used instead of em because rem always bases itself off the page declared font-size\r\n// em bases itself off of the font-size of the element (it uses inhertiance and thus is harder to predict)\r\n$rem-base:  18px;\r\n\r\n// Branding Colors\r\n\r\n$brand-primary: #4AAAA5;\r\n$brand-secondary: #4A97DD;\r\n\r\n// Typography\r\n$white: #fff;\r\n$base-grey: #111111;\r\n$base-black: #100c0a;\r\n\r\n* {\r\n\tbox-sizing: border-box;\r\n\r\n\t/* for debugging*/\r\n\toutline-style: dotted;\r\n\toutline-color: orange;\r\n}",
 		"",
-		"// Test div\r\n\r\n.test{\r\n\theight: 200px;\r\n\twidth: 200px;\r\n\tbackground-color: blue;\r\n}",
-		"",
+		"\r\n//masthead styles\r\n\r\n.masthead{\r\n\ttext-align: center;\r\n\tcolor: $white;\r\n\tbackground-color: $base-grey;\r\n}",
+		".header{\r\n\ttop: 0;\r\n\tleft:0;\r\n\tcolor: $white;\r\n\theight: 100px;\r\n\tpadding: 0 42px;\r\n}\r\n.navbar{\r\n\tmargin-bottom: 0px;\r\n\tborder-radius: 0px;\r\n\tposition: relative;\r\n\theight: 100px;\r\n\tbackground-color: $base-black;\r\n\tcolor: $white;\r\n\t//center align nav links vertically after increasing height of bootstrap navbar\r\n\tline-height: $rem-base * 5.5;\r\n\t.navbar-nav{\r\n\t\tli{\r\n\t\t\ta{\r\n\t\t\t\ttext-transform: uppercase;\r\n\t\t\t\tline-height: $rem-base * 3.5;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}\r\n\r\n.navbar-default{\r\n\tborder: none;\r\n}\r\n\r\n//Center align the nav links\r\n@media (min-width: 768px) {\r\n    .navbar .navbar-nav {\r\n        display: inline-block;\r\n        float: none;\r\n        vertical-align: top;\r\n    }\r\n\r\n    .navbar .navbar-collapse {\r\n        text-align: center;\r\n    }\r\n}",
 		"",
 		"",
 		""
 	],
-	"mappings": "ACAA,oBAAoB;;AEEpB,AAAA,KAAK,CAAA;EACJ,MAAM,EAAE,KAAM;EACd,KAAK,EAAE,KAAM;EACb,gBAAgB,EAAE,IAAK;CACvB",
+	"mappings": "ACAA,oBAAoB;;AAkBpB,AAAA,CAAC,CAAC;EACD,UAAU,EAAE,UAAW;EAEvB,kBAAkB;EAClB,aAAa,EAAE,MAAO;EACtB,aAAa,EAAE,MAAO;CACtB;;;AErBD,AAAA,SAAS,CAAA;EACR,UAAU,EAAE,MAAO;EACnB,KAAK,EFSE,IAAI;EERX,gBAAgB,EFSL,OAAO;CERlB;;;ACPD,AAAA,OAAO,CAAA;EACN,GAAG,EAAE,CAAE;EACP,IAAI,EAAC,CAAE;EACP,KAAK,EHWE,IAAI;EGVX,MAAM,EAAE,KAAM;EACd,OAAO,EAAE,MAAO;CAChB;;;AACD,AAAA,OAAO,CAAA;EACN,aAAa,EAAE,GAAI;EACnB,aAAa,EAAE,GAAI;EACnB,QAAQ,EAAE,QAAS;EACnB,MAAM,EAAE,KAAM;EACd,gBAAgB,EHIJ,OAAO;EGHnB,KAAK,EHCE,IAAI;EGCX,WAAW,EAAE,IAAS;CAStB;;;AAjBD,AAWG,OAXI,CASN,WAAW,CACV,EAAE,CACD,CAAC,CAAA;EACA,cAAc,EAAE,SAAU;EAC1B,WAAW,EAAE,IAAS;CACtB;;;AAKJ,AAAA,eAAe,CAAA;EACd,MAAM,EAAE,IAAK;CACb;;AAGD,MAAM,EAAL,SAAS,EAAE,KAAK;;EACb,AAAQ,OAAD,CAAC,WAAW,CAAC;IAChB,OAAO,EAAE,YAAa;IACtB,KAAK,EAAE,IAAK;IACZ,cAAc,EAAE,GAAI;GACvB;;EAED,AAAQ,OAAD,CAAC,gBAAgB,CAAC;IACrB,UAAU,EAAE,MAAO;GACtB",
 	"names": []
 }

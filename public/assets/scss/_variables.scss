@@ -12,3 +12,14 @@ $brand-primary: #4AAAA5;
 $brand-secondary: #4A97DD;
 
 // Typography
+$white: #fff;
+$base-grey: #111111;
+$base-black: #100c0a;
+
+* {
+	box-sizing: border-box;
+
+	/* for debugging*/
+	outline-style: dotted;
+	outline-color: orange;
+}
