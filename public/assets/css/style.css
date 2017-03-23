@@ -138,4 +138,16 @@ input[type=text] {
   color: #fff;
 }
 
+/* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
+footer {
+  background-color: #4bd2ff;
+  text-align: center;
+  height: 45px;
+}
+
+/* line 5, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
+footer p {
+  margin-top: 10px;
+}
+
 /*# sourceMappingURL=../css/style.map */
