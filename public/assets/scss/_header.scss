@@ -14,11 +14,26 @@
 	color: $white;
 	//center align nav links vertically after increasing height of bootstrap navbar
 	line-height: $rem-base * 5.5;
+	a.navbar-brand{
+			line-height: $rem-base * 3.5;
+			color: $white;
+			font-family: 'Nova Oval', cursive;
+			font-size: $rem-base * 1.5;
+
+	}
+	a.navbar-brand:hover, a.navbar-brand:focus{
+				color: $brand-four;
+	}
+			
 	.navbar-nav{
 		li{
 			a{
 				text-transform: uppercase;
 				line-height: $rem-base * 3.5;
+				color: $white;
+			}
+			a:hover, a:focus{
+				color: $brand-four;
 			}
 		}
 	}
@@ -26,6 +41,23 @@
 
 .navbar-default{
 	border: none;
+}
+
+//toggled navbar bg -color
+#navbar.navbar-collapse{
+	background-color: $base-grey;
+}
+
+
+//icon styles
+.fa-cutlery, .fa-plus{
+	color: $brand-primary;
+}
+.fa-fire{
+	color: $brand-secondary;
+}
+.fa-bookmark{
+	color: $brand-tertiary;
 }
 
 //Center align the nav links
@@ -39,4 +71,11 @@
     .navbar .navbar-collapse {
         text-align: center;
     }
+}
+
+//Override font color of all links in navbar
+.navbar{
+	a{
+		color: $white;
+	}
 }
