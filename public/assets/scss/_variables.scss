@@ -8,7 +8,24 @@ $rem-base:  18px;
 
 // Branding Colors
 
-$brand-primary: #4AAAA5;
-$brand-secondary: #4A97DD;
+$brand-primary: #4bd2ff;
+$brand-secondary: #ffb14b;
+$brand-tertiary: #ff574b;
+$brand-four: #4bff78;
+
+
+$white: #fff;
+$base-grey: #111111;
+$base-black: #100c0a;
+
+/* * {
+	box-sizing: border-box;
+
+	for debugging
+	outline-style: dotted;
+	outline-color: orange;
+} */
 
 // Typography
+
+$sans-serif-font-family: 'Helvetica Neue','Arial', Helvetica, Arial, sans-serif;

@@ -1,9 +1,153 @@
 /* Site Variables */
-/* line 3, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
-.test {
-  height: 200px;
+/* * {
+	box-sizing: border-box;
+
+	for debugging
+	outline-style: dotted;
+	outline-color: orange;
+} */
+/* line 4, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.masthead {
+  text-align: center;
+  color: #fff;
+  background-color: #111111;
+  padding: 35px;
+  font-family: "Helvetica Neue", "Arial", Helvetica, Arial, sans-serif;
+}
+
+/* line 12, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.masthead .masthead-content-visible h2 {
+  letter-spacing: 1px;
+}
+
+/* line 15, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.masthead .masthead-content-visible h1 {
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  /* line 24, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+  .masthead .masthead-content-visible h2 {
+    padding: 0 200px;
+  }
+}
+
+/* line 33, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+input[type=text] {
+  margin-top: 20px;
   width: 200px;
-  background-color: blue;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #100c0a;
+  padding: 12px;
+  /* -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out; */
+}
+
+/* input[type=text]:focus {
+    width: 100%;
+}  */
+/* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.header {
+  top: 0;
+  left: 0;
+  color: #fff;
+  height: 100px;
+  padding: 0 42px;
+}
+
+/* line 8, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  position: relative;
+  height: 100px;
+  background-color: #100c0a;
+  color: #fff;
+  line-height: 99px;
+}
+
+/* line 17, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar a.navbar-brand {
+  line-height: 63px;
+  color: #fff;
+  font-family: 'Nova Oval', cursive;
+  font-size: 27px;
+}
+
+/* line 24, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar a.navbar-brand:hover, .navbar a.navbar-brand:focus {
+  color: #4bff78;
+}
+
+/* line 30, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar .navbar-nav li a {
+  text-transform: uppercase;
+  line-height: 63px;
+  color: #fff;
+}
+
+/* line 35, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar .navbar-nav li a:hover, .navbar .navbar-nav li a:focus {
+  color: #4bff78;
+}
+
+/* line 42, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar-default {
+  border: none;
+}
+
+/* line 47, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+#navbar.navbar-collapse {
+  background-color: #111111;
+}
+
+/* line 53, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.fa-cutlery, .fa-plus {
+  color: #4bd2ff;
+}
+
+/* line 56, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.fa-fire {
+  color: #ffb14b;
+}
+
+/* line 59, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.fa-bookmark {
+  color: #ff574b;
+}
+
+@media (min-width: 768px) {
+  /* line 65, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+  .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  /* line 71, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+}
+
+/* line 78, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.navbar a {
+  color: #fff;
+}
+
+/* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
+footer {
+  background-color: #4bd2ff;
+  text-align: center;
+  height: 45px;
+}
+
+/* line 5, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
+footer p {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=../css/style.map */
