@@ -29,7 +29,8 @@ module.exports = function (sequelize, DataTypes) {
 				isInt: true,
 				len: [5,5]
 			}
-		},
+		}
+	},
 		{
 			classMethods: {
 				associate: function(models) {
