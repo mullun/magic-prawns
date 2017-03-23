@@ -36,6 +36,18 @@ module.exports = function (sequelize, DataTypes) {
 		description: {
 			type: DataTypes.TEXT
 		}
-	});
+	},
+		{
+			classMethods: {
+				associate: function(models) {
+					Dish.belongsTo(models.User, {
+						foreignKey: {
+							allowNull: false
+						}
+					});
+				}
+			}
+		}
+	);
 	return Dish;
 };
