@@ -11,7 +11,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/ext/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts -->
+    <link href="assets/ext/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crafty+Girls|Delius+Unicase|Faster+One|Freckle+Face|Nova+Oval|Ruslan+Display" rel="stylesheet">
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
@@ -19,33 +23,50 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Magic Prawns</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#saved">Saved</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id = "new">New</a></li>
-            <li><a href="#saved" class = "btn btn-default" data-toggle="modal" data-target="#loginModal" id = "login">Login</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <div class = "site-content-container">
 
-    <div class = "content">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    </div>
+        <header>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Magic Prawns</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>&nbsp; All</a></li>
+                    <li><a href="#featured"><i class="fa fa-fire fa-lg" aria-hidden="true"></i>&nbsp; Featured</a></li>
+                    <li><a href="#saved"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>&nbsp; Saved</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id = "new"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp; New</a></li>
+                    <li><a href="#login" data-toggle="modal" data-target="#loginModal" id = "login">Login</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="masthead">
+                <div class = "masthead-content-visible container">
+                    <h1><strong>All Crumbs</strong></h1>
+                    <h2>Explore photos, experiences, and more from previous crumbs</h2>
+                    <form class="navbar-form" role="search">
+                        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                        <input type="text" name="search" placeholder="Search for..">
+                    </form>
+                </div>
+            </div>
+            <div class = "block-items"></div>
+        </main>
+
+    </div> <!--site-content-container-->
 
     <!--Login Modal-->
     <div class="modal fade" id = "loginModal" tabindex="-1" role="dialog">
@@ -91,6 +112,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/ext/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
