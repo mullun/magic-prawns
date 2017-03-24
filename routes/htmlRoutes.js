@@ -29,4 +29,27 @@ module.exports = function(app){
 		};
 		res.render("index", hbsObject);
 	});
+
+
+	// When user clicks on the Sign up link, render the signup handlebars and override the default layout to use useraccount.hbs
+	app.get("/signup", function(req,res){
+
+		var hbsObject = {
+			title: "Sign Up - Magic Prawns",
+			layout: "useraccount"
+		};
+
+		res.render("signup", hbsObject);
+	});
+
+	// When user clicks on the Login link, render the login handlebars and override the default layout to use useraccount.hbs
+	app.get("/login", function(req,res){
+
+		var hbsObject = {
+			title: "Login - Magic Prawns",
+			layout: "useraccount"
+		};
+
+		res.render("login", hbsObject);
+	});
 };
