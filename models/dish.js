@@ -40,10 +40,8 @@ module.exports = function (sequelize, DataTypes) {
 		{
 			classMethods: {
 				associate: function(models) {
-					Dish.belongsTo(models.User, {
-						foreignKey: {
-							allowNull: false
-						}
+					Dish.hasMany(models.Meal, {
+						
 					});
 				}
 			}
