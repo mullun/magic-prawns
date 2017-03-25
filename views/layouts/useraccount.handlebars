@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sign Up - Magic Prawns</title>
+	<title>{{title}}</title>
 
     <!-- Reset CSS -->
     <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
@@ -18,7 +18,30 @@
 
 </head>
 <body>
-   <footer>
+    
+    <div class = "container">
+        <div class="page-header">
+            <h1 class = "text-center">Magic Prawns</h1>
+        </div>
+
+        {{!-- Post flash messages here --}}
+        {{#if success_msg}}
+            <div class = "alert alert-success">{{success_msg}}</div>
+        {{/if}}
+        {{#if error_msg}}
+            <div class = "alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+        {{#if error}}
+            <div class = "alert alert-danger">{{error}}</div>
+        {{/if}}
+        
+    
+
+        {{{body}}}
+
+    </div>
+
+	 <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
