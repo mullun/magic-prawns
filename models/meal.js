@@ -1,19 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
 	var Meal = sequelize.define("Meal", {
-		meal_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
-		},
-		restaurant: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
-		},
 		rating: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -23,18 +9,19 @@ module.exports = function (sequelize, DataTypes) {
 				max: 5
 			}
 		},
-		zip_code: {
-			type: DataTypes.INTEGER,
-			validate: {
-				isInt: true,
-				len: [5,5]
-			}
+		description: {
+			type: DataTypes.TEXT
 		}
 	},
 		{
 			classMethods: {
 				associate: function(models) {
 					Meal.belongsTo(models.User, {
+						foreignKey: {
+							allowNull: false
+						}
+					});
+					Meal.belongsTo(models.Dish, {
 						foreignKey: {
 							allowNull: false
 						}

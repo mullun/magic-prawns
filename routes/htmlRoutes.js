@@ -62,25 +62,39 @@ module.exports = function(app){
 		res.render("login", hbsObject);
 	});
 
-	app.get("/testdish/:dishName/:userId", function(req, res) {
+	app.get("/testdish/:dishName", function(req, res) {
     	db.Dish.create({
     		dish_name: req.params.dishName,
     	 	restaurant: "test restaurant",
     	 	rating: 3,
     	 	zip_code: 27516,
-    	 	cuisine: "test cuisine",
-    	 	UserId: req.params.userId
+    	 	cuisine: "test cuisine"
     	}).then(function(dbUser){
     		res.json(dbUser);
     	});
   	});
 
-	app.get("/testuser/:id", function(req, res) {
+	app.get("/testuser/:id/:password", function(req, res) {
     	db.User.create({
-    		user_name: req.params.id
+    		user_email: req.params.id,
+        password: req.params.password
     	}).then(function(dbUser){
     		res.json(dbUser);
     	});
   	});
+  
+  app.get("/testmeal/:dish_id/:user_id", function(req, res) {
+      db.Meal.create({
+        UserId: req.params.user_id,
+        DishId: req.params.dish_id,
+        rating: 3,
+        description: "Was good",
+        meal_name: "Test meal",
+        restaurant: "The worst",
+        zip_code: 27516
+      }).then(function(dbUser){
+        res.json(dbUser);
+      });
+    });  
 
 };
