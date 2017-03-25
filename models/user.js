@@ -23,10 +23,8 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           // An Author (foreignKey) is required or a Post can't be made
-          User.hasMany(models.Dish, {
-            foreignKey: {
-              allowNull: false
-            }
+          User.hasMany(models.Meal, {
+            
           });
         }
       },

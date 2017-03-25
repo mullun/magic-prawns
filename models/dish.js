@@ -32,10 +32,17 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		cuisine: {
 			type: DataTypes.STRING
-		},
-		description: {
-			type: DataTypes.TEXT
 		}
-	});
+	},
+		{
+			classMethods: {
+				associate: function(models) {
+					Dish.hasMany(models.Meal, {
+						
+					});
+				}
+			}
+		}
+	);
 	return Dish;
 };
