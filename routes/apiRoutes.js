@@ -124,6 +124,8 @@ module.exports = function(app) {
 
 // user sends a dish to store in database
   app.post("/dish", function(req, res){
+    console.log("req.user.id");
+    console.log(req.user.id);
     db.Dish.findOne({
       where: {
         dish_name: req.body.dish_name,
@@ -134,53 +136,59 @@ module.exports = function(app) {
     .then(function(dbDish) {
       console.log("dbDish");
       console.log(dbDish);
-      if(dbDish.length===1){
-        console.log("dbDish");
-        console.log(dbDish);
+      if(dbDish){
         //update meal table and average rating in dish table
-        var dish_id = dbDish[0].id;  // get the ID of the dish from table
-        var dish_rating = dbDish[0].rating;
-        var newRating = (parseInt(dish_rating) + parseInt(req.body.rating)) / 2;
-        var meal = {
-          rating: req.body.rating,
+        console.log("existing dish");
+        console.log(dbDish.dataValues.id);
+        var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
+        var dish_rating = dbDish.dataValues.rating;
+        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        console.log("creating new meal")
+        db.Meal.create({
+          rating: parseInt(req.body.rating),
           description: req.body.description,
-          image: req.body.image,
+          image: req.params.image,
           DishId: dish_id,
-          UserId: req.body.user_id
-        }
-        db.Meal.create(meal);
+          UserId: req.user.id
+        }).then(function(dbMealNew){
+          console.log("updating dish rating");
         // update average rating in Dish Table
-        db.Dish.update(
-            {rating : newRating},
-            {where:{DishId:dish_id}}
-        );
+          db.Dish.update(
+            {rating : parseInt(newRating)},
+            {where:{id:dish_id}}
+            )
+        });
         res.redirect("/saved");
       } 
-      else if(dbDish.length===0) {  // dish being sent is new
+      else if(!dbDish) {  // dish being sent is new
        //update dishtable and then meal table
+       console.log("creating unique dish");
         db.Dish.create ({
           dish_name: req.body.dish_name,
-          restaurant: req.body.restaurant,
-          zip_code: req.body.zip_code,
-          cuisine: req.body.cuisine,
-          avg_rating: req.body.rating
+          restaurant: req.params.restaurant,
+          zip_code: req.params.zip_code,
+          cuisine: req.params.cuisine,
+          rating: parseInt(req.params.rating)
         }).then(function(dbDishNew) {
-          Dish.find(dbDishNew.id).then(function (dish_id_new) {
-            db.Meal.create({
-                UserId:req.body.id,
-                DishId:dish_id_new,
-                rating: req.body.rating,
-                description: req.body.description,
-                image: req.body.image
-            }).then(function(dbMealNew) {
-                  res.redirect("/saved");
-            })
-          });
+          console.log("created new dish");
+          console.log("dbDishNew.id");
+          console.log(dbDishNew.id);
+          console.log("user before new meal");
+          console.log(req.user.id);
+          db.Meal.create({
+            UserId:req.user.id,
+            DishId:dbDishNew.id,
+            rating: parseInt(req.body.rating),
+            description: req.body.description,
+            image: req.body.image
+          }).then(function(dbMealNew) {
+            res.redirect("/saved");
+          })
         })
       }
-        // res.json(dbDish);
     });
   });
+
 
   app.get("/dish/:cuisine/:desc/:dishName/:img/:rating/:restName/:zip", function(req, res){
     console.log("req.user.id");
@@ -227,7 +235,7 @@ module.exports = function(app) {
           restaurant: req.params.restName,
           zip_code: req.params.zip,
           cuisine: req.params.cuisine,
-          rating: req.params.rating
+          rating: parseInt(req.params.rating)
         }).then(function(dbDishNew) {
           console.log("created new dish");
           console.log("dbDishNew.id");
@@ -237,7 +245,7 @@ module.exports = function(app) {
           db.Meal.create({
             UserId:req.user.id,
             DishId:dbDishNew.id,
-            rating: req.params.rating,
+            rating: parseInt(req.params.rating),
             description: req.params.desc,
             image: req.params.img
           }).then(function(dbMealNew) {
@@ -245,7 +253,6 @@ module.exports = function(app) {
           })
         })
       }
-        // res.json(dbDish);
     });
   });
 
