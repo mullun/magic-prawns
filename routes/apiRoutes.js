@@ -167,7 +167,7 @@ module.exports = function(app) {
         }).then(function(dbDishNew) {
           Dish.find(dbDishNew.id).then(function (dish_id_new) {
             db.Meal.create({
-                UserId:req.body.user_id,
+                UserId:req.body.id,
                 DishId:dish_id_new,
                 rating: req.body.rating,
                 description: req.body.description,
@@ -182,5 +182,71 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/dish/:cuisine/:desc/:dishName/:img/:rating/:restName/:zip", function(req, res){
+    console.log("req.user.id");
+    console.log(req.user.id);
+    db.Dish.findOne({
+      where: {
+        dish_name: req.params.dishName,
+        restaurant: req.params.restName,
+        zip_code: req.params.zip
+       }
+    })
+    .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
+      if(dbDish){
+        //update meal table and average rating in dish table
+        console.log("existing dish");
+        console.log(dbDish.dataValues.id);
+        var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
+        var dish_rating = dbDish.dataValues.rating;
+        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        console.log("creating new meal")
+        db.Meal.create({
+          rating: parseInt(req.params.rating),
+          description: req.params.desc,
+          image: req.params.img,
+          DishId: dish_id,
+          UserId: req.user.id
+        }).then(function(dbMealNew){
+          console.log("updating dish rating");
+          db.Dish.update(
+            {rating : parseInt(newRating)},
+            {where:{id:dish_id}}
+            )
+        });
+        // update average rating in Dish Table
+        res.redirect("/saved");
+      } 
+      else if(!dbDish) {  // dish being sent is new
+       //update dishtable and then meal table
+       console.log("creating unique dish");
+        db.Dish.create ({
+          dish_name: req.params.dishName,
+          restaurant: req.params.restName,
+          zip_code: req.params.zip,
+          cuisine: req.params.cuisine,
+          rating: req.params.rating
+        }).then(function(dbDishNew) {
+          console.log("created new dish");
+          console.log("dbDishNew.id");
+          console.log(dbDishNew.id);
+          console.log("user before new meal");
+          console.log(req.user.id);
+          db.Meal.create({
+            UserId:req.user.id,
+            DishId:dbDishNew.id,
+            rating: req.params.rating,
+            description: req.params.desc,
+            image: req.params.img
+          }).then(function(dbMealNew) {
+            res.redirect("/saved");
+          })
+        })
+      }
+        // res.json(dbDish);
+    });
+  });
 
 };
