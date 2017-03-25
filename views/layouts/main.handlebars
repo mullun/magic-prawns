@@ -44,9 +44,12 @@
                     <li {{#if savedTabisActive}} class="active" {{/if}}><a href="/saved"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>&nbsp; Saved</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
+                    {{#if user}}
                     <li><a href="#" id = "new" data-toggle = "modal" data-target="#createForm"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp; New</a></li>
+                    <li><a href="/logout" id = "logout">Logout</a></li>
+                    {{else}}
                     <li><a href="/login" id = "login">Login</a></li>
-                     <li><a href="/logout" id = "logout">Logout</a></li>
+                    {{/if}}
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>

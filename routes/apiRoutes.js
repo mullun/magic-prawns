@@ -55,7 +55,14 @@ module.exports = function(app) {
       function(req, res){
         //Redirect to user's saved page
         res.redirect('/saved');
-});
+  });
+
+  //User Logout
+  app.get('/logout', function(req, res){
+    req.logout();
+    req.flash("success_msg", "You have successfully logged out");
+    res.redirect('/login');
+  });
 
 
   app.get("/api/users", function(req, res) {
