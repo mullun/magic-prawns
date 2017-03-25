@@ -9,26 +9,50 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app){
 
 
-	app.get("/", function(req, res){
-    
+  app.get("/", function(req, res){
+
       db.Dish.findAll({}).then(function(dbDish){
+        var hbsObject = {
+          Dish: dbDish,
+          allTabisActive: true,
+          searchTerm: req.query.search
+        };
+        res.render("index", hbsObject);
+      });
+    
+  });
+
+	app.get("/featured", function(req, res){
+
+      db.Dish.findAll({
+        order: [
+          ["rating", "DESC"]
+        ]
+      }).then(function(dbDish){
     		var hbsObject = {
           Dish: dbDish,
-    			allTabisActive: true,
-    			searchTerm: req.query.search
+    			featuredTabisActive: true
+    			//searchTerm: req.query.search
     		};
     		res.render("index", hbsObject);
       });
     
 	});
 
-	app.get("/featured", function(req, res){
-		var hbsObject = {
-			Dish: "data",
-			featuredTabisActive: true
-		};
-		res.render("index", hbsObject);
-	});
+	// app.get("/featured", function(req, res){
+ //  	db.Dish.findAll({
+ //      order: [
+ //        ["rating", "DESC"]
+ //      ]
+ //    }).then(function(dbDish){	
+ //      console.log(dbDish)
+ //      var hbsObject = {
+ //  			Dish: dbDish,
+ //  			featuredTabisActive: true
+ //  		};
+ //    });
+	// 	res.render("index", hbsObject);
+	// });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the login page
@@ -64,11 +88,11 @@ module.exports = function(app){
 		res.render("login", hbsObject);
 	});
 
-	app.get("/testdish/:dishName", function(req, res) {
+	app.get("/testdish/:dishName/:rating", function(req, res) {
     	db.Dish.create({
     		dish_name: req.params.dishName,
     	 	restaurant: "test restaurant",
-    	 	rating: 3,
+    	 	rating: req.params.rating,
     	 	zip_code: 27516,
     	 	cuisine: "test cuisine"
     	}).then(function(dbUser){
