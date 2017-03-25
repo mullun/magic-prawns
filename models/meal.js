@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-	var Dish = sequelize.define("Dish", {
-		dish_name: {
+	var Meal = sequelize.define("Meal", {
+		meal_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
@@ -29,18 +29,12 @@ module.exports = function (sequelize, DataTypes) {
 				isInt: true,
 				len: [5,5]
 			}
-		},
-		cuisine: {
-			type: DataTypes.STRING
-		},
-		description: {
-			type: DataTypes.TEXT
 		}
 	},
 		{
 			classMethods: {
 				associate: function(models) {
-					Dish.belongsTo(models.User, {
+					Meal.belongsTo(models.User, {
 						foreignKey: {
 							allowNull: false
 						}
@@ -49,5 +43,5 @@ module.exports = function (sequelize, DataTypes) {
 			}
 		}
 	);
-	return Dish;
+	return Meal;
 };

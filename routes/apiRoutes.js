@@ -106,4 +106,62 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/signup", function(req, res){
+    db.User.findOne({
+      where: {
+        user_name: req.body.user_name
+      }
+    })
+    .then(function(dbUser){
+      if(dbUser.length===0){
+        db.User.create(req.body);
+        res.redirect("/");
+      }else{
+        return null;
+      }
+    });
+  });
+
+  app.post("/dish", function(req, res){
+    db.Dish.findAll({
+      where: {
+        UserId: req.body.UserId,
+        dish_name: req.body.dish_name,
+        restaurant: req.body.restaurant,
+        zip_code: req.body.zip_code
+       }
+    })
+    .then(function(dbDish) {
+      if(dbDish.length===1){
+        //update meal table and average rating in dish table
+        var meal = {
+          dish_name: req.body.dish_name,
+          rating: req.body.rating,
+          description: req.body.description,
+          image: req.body.image
+         }
+        db.Meal.create(meal);
+      }else if(dbDish.length===0){
+       //update dishtable and then meal table
+        var dish = {
+          dish_name: req.body.dish_name,
+          restaurant: req.body.restaurant,
+          zip_code: req.body.zip_code,
+          cuisine: req.body.cuisine,
+          avg_rating: req.body.rating
+        };
+        var meal = {
+          dish_name: req.body.dish_name,
+          rating: req.body.rating,
+          description: req.body.description,
+          image: req.body.image
+        };
+        db.Dish.create(dish);
+        db.Meal.create(meal);
+      }
+        // res.json(dbDish);
+      });
+  });
+
+
 };
