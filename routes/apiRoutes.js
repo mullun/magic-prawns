@@ -122,45 +122,64 @@ module.exports = function(app) {
     });
   });
 
+// user sends a dish to store in database
   app.post("/dish", function(req, res){
-    db.Dish.findAll({
+    db.Dish.findOne({
       where: {
-        UserId: req.body.UserId,
         dish_name: req.body.dish_name,
         restaurant: req.body.restaurant,
         zip_code: req.body.zip_code
        }
     })
     .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
       if(dbDish.length===1){
+        console.log("dbDish");
+        console.log(dbDish);
         //update meal table and average rating in dish table
+        var dish_id = dbDish[0].id;  // get the ID of the dish from table
+        var dish_rating = dbDish[0].rating;
+        var newRating = (parseInt(dish_rating) + parseInt(req.body.rating)) / 2;
         var meal = {
-          dish_name: req.body.dish_name,
           rating: req.body.rating,
           description: req.body.description,
-          image: req.body.image
-         }
+          image: req.body.image,
+          DishId: dish_id,
+          UserId: req.body.user_id
+        }
         db.Meal.create(meal);
-      }else if(dbDish.length===0){
+        // update average rating in Dish Table
+        db.Dish.update(
+            {rating : newRating},
+            {where:{DishId:dish_id}}
+        );
+        res.redirect("/saved");
+      } 
+      else if(dbDish.length===0) {  // dish being sent is new
        //update dishtable and then meal table
-        var dish = {
+        db.Dish.create ({
           dish_name: req.body.dish_name,
           restaurant: req.body.restaurant,
           zip_code: req.body.zip_code,
           cuisine: req.body.cuisine,
           avg_rating: req.body.rating
-        };
-        var meal = {
-          dish_name: req.body.dish_name,
-          rating: req.body.rating,
-          description: req.body.description,
-          image: req.body.image
-        };
-        db.Dish.create(dish);
-        db.Meal.create(meal);
+        }).then(function(dbDishNew) {
+          Dish.find(dbDishNew.id).then(function (dish_id_new) {
+            db.Meal.create({
+                UserId:req.body.user_id,
+                DishId:dish_id_new,
+                rating: req.body.rating,
+                description: req.body.description,
+                image: req.body.image
+            }).then(function(dbMealNew) {
+                  res.redirect("/saved");
+            })
+          });
+        })
       }
         // res.json(dbDish);
-      });
+    });
   });
 
 
