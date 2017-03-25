@@ -41,7 +41,9 @@
                   <ul class="nav navbar-nav">
                     <li {{#if allTabisActive}} class="active" {{/if}}><a href="/"><i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>&nbsp; All</a></li>
                     <li {{#if featuredTabisActive}} class="active" {{/if}}><a href="/featured"><i class="fa fa-fire fa-lg" aria-hidden="true"></i>&nbsp; Featured</a></li>
-                    <li {{#if savedTabisActive}} class="active" {{/if}}><a href="/saved"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>&nbsp; Saved</a></li>
+                    {{#if savedTabisActive}}
+                    <li {{> activate-saved}} ><a href="/saved"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>&nbsp; Saved</a></li>
+                    {{/if}}
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                     {{#if user}}
