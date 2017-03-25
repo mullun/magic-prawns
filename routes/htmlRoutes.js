@@ -7,19 +7,16 @@ module.exports = function(app){
 
 
 	app.get("/", function(req, res){
-
-	    // db.Dish.findAll({})
-	    // .then(function(dbDish) {
-	    // //sort by rating	
-	    //   res.json(dbDish);
-	    // });
-
-		var hbsObject = {
-			Dish: "data",
-			allTabisActive: true,
-			searchTerm: req.query.search
-		};
-		res.render("index", hbsObject);
+    
+      db.Dish.findAll({}).then(function(dbDish){
+    		var hbsObject = {
+          Dish: dbDish,
+    			allTabisActive: true,
+    			searchTerm: req.query.search
+    		};
+    		res.render("index", hbsObject);
+      });
+    
 	});
 
 	app.get("/featured", function(req, res){

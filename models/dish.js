@@ -32,9 +32,6 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		cuisine: {
 			type: DataTypes.STRING
-		},
-		description: {
-			type: DataTypes.TEXT
 		}
 	},
 		{

@@ -11,6 +11,12 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		description: {
 			type: DataTypes.TEXT
+		},
+		image: {
+			type: DataTypes.STRING,
+			validate: {
+				isUrl: true
+			}
 		}
 	},
 		{
