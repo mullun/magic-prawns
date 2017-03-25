@@ -4,6 +4,8 @@ var router = express.Router();
 var db = require("../models")
 
 module.exports = function(app){
+
+
 	app.get("/", function(req, res){
 
 	    // db.Dish.findAll({})
@@ -39,22 +41,24 @@ module.exports = function(app){
 	});
 
 
-	app.get("/api", function(req, res) {
-    	// db.User.create({
-    	// 	user_name: "tester"
-    	// }).then(function(dbUser){
-    	// 	res.json(dbUser);
-    	// });
+	app.get("/testdish/:dishName/:userId", function(req, res) {
+    	db.Dish.create({
+    		dish_name: req.params.dishName,
+    	 	restaurant: "test restaurant",
+    	 	rating: 3,
+    	 	zip_code: 27516,
+    	 	cuisine: "test cuisine",
+    	 	UserId: req.params.userId
+    	}).then(function(dbUser){
+    		res.json(dbUser);
+    	});
+  	});
 
-   //  	db.Dish.create({
-   //  		dish_name: "test food",
-   //  		restaurant: "test resto",
-   //  		rating: 3,
-   //  		zip_code: 27516,
-   //  		cuisine: "test cuisine",
-   //  		userId: 1
-   //  	}).then(function(dbPost) {
-   //    		res.json(dbPost);
-   //  	});
-  	// });
+	app.get("/testuser/:id", function(req, res) {
+    	db.User.create({
+    		user_name: req.params.id
+    	}).then(function(dbUser){
+    		res.json(dbUser);
+    	});
+  	});
 };
