@@ -8,20 +8,51 @@ passport.use(new LocalStrategy(
 
 	//By default, LocalStrategy expects to find credentials in parameters named username , here we are changing defaults to use email
 	{
-		usernameField: "email"
+		usernameField: "useremail"
 	},
-  function(email, password, done) {
+  	function(useremail, password, done) {
+  		console.log(useremail + '|' + password);
 
-    db.User.findOne({ username: username }, function(err, user) {
-      if (err) throw err;
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
+    	db.User.findOne({ 
+    		where: {
+    			user_email: useremail 
+    		}
+    	}).then(function(dbUser){
+    		console.log(dbUser);
+    		//if there is no user with the given email
+    		if (!dbUser) {
+        		return done(null, false, {
+          		message: "Incorrect email."
+       		 	});
+      		}
+      		// If there is a user with the given email, but the password the user gives us is incorrect
+      		else if (!dbUser.validPassword(password)) {
+        		return done(null, false, {
+          		message: "Invalid password."
+        		});
+      		}
+
+      		// If none of the above, return the user
+      		return done(null, dbUser);
+    	});
+  	}
 ));
 
+// In order to help keep authentication state across HTTP requests,
+//Each subsequent request will not contain credentials, but rather the unique cookie that identifies the session. In order to support login sessions, Passport will serialize and deserialize user instances to and from the session.
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  		db.User.findOne({ 
+    		where: {
+    			id: id 
+    		}
+    	}).then(function(dbUser){
+    		done(null, dbUser);
+    	});
+});
+
+// Exporting our configured passport
+module.exports = passport;

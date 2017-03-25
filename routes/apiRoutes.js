@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("../config/passport");
 
 module.exports = function(app) {
 
@@ -46,18 +47,16 @@ module.exports = function(app) {
 
   //User Login
   app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-     passport.authenticate('local', { successRedirect: '/',
+    // The login form is submitted to the server via the POST method. Using authenticate() with the local strategy will handle the login request.
+     passport.authenticate('local', { successRedirect: '/saved',
                                    failureRedirect: '/login',
-                                   failureFlash: true },
-                                   function(req, res){
-                                    //Redirect to user's saved page
-                                    res.redirect('/saved');
-                                   });
-  });
+                                   failureFlash: true }),
+
+      function(req, res){
+        //Redirect to user's saved page
+        res.redirect('/saved');
+});
+
 
   app.get("/api/users", function(req, res) {
     // Here we add an "include" property to our options in our findAll query
