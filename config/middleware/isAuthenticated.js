@@ -5,6 +5,7 @@ module.exports = function(req, res, next) {
     return next();
   }
 
+  req.flash("error_msg", "You are not logged in");
   // If the user isnt' logged in, redirect them to the login page
-  return res.redirect("/");
+  return res.redirect("/login");
 };

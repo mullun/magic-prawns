@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-var db = require("../models")
+var db = require("../models");
+
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app){
 
@@ -27,7 +30,9 @@ module.exports = function(app){
 		res.render("index", hbsObject);
 	});
 
-	app.get("/saved", function(req, res){
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the login page
+	app.get("/saved", isAuthenticated, function(req, res){
 		var hbsObject = {
 			Dish: "data",
 			savedTabisActive: true,
