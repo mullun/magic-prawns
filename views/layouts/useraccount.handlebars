@@ -24,6 +24,19 @@
             <h1 class = "text-center">Magic Prawns</h1>
         </div>
 
+        {{!-- Post flash messages here --}}
+        {{#if success_msg}}
+            <div class = "alert alert-success">{{success_msg}}</div>
+        {{/if}}
+        {{#if error_msg}}
+            <div class = "alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+        {{#if error}}
+            <div class = "alert alert-danger">{{error}}</div>
+        {{/if}}
+        
+    
+
         {{{body}}}
 
     </div>

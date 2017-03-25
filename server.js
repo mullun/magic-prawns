@@ -7,11 +7,13 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var expressValidator = require("express-validator");
 
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+/*var passport = require("./config/passport");*/
+var passport = require("passport");
 var flash = require("connect-flash");
 
 // Sets up the Express App
@@ -33,6 +35,35 @@ app.use(cookieParser());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+ 
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+//connect flash - Flash is a special area of session used for storing meassages. Messages are written to the flash and cleared after being displayed to the user. 
+app.use(flash());
+app.use(function(req, res, next){
+	//setting global vars
+	res.locals.success_msg = req.flash("success_msg");
+	res.locals.error_msg = req.flash("error_msg");
+	res.locals.error = req.flash("error");
+	next();
+});
+
 
 // Static directory
 app.use(express.static("./public"));
