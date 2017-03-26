@@ -51,8 +51,10 @@ module.exports = function(app){
           },
           include: [db.Dish]
     }).then(function(dbMeal){
-        console.log("dbMeal: ");
-        console.log(dbMeal);
+        for(var i = 0; i < dbMeal.length; i++){
+          console.log("dbMeal "+i);
+          console.log(dbMeal[i]);
+        }
         var hbsObject = {
           Meal: dbMeal,
           savedTabisActive: true

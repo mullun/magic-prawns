@@ -1,12 +1,9 @@
 <p>Index will go here</p>
 <p>you searched for: {{searchTerm}}</p>
-{{#if savedTabIsActive}}
-	<p>Saved Stuff:</p>
-	{{#each Meal}}
-	<li>{{this.dish_name}}</li>
-	{{/each}}
-{{else}}
+{{#unless savedTabIsActive}}
 	{{#each Dish}}
 		<li>{{this.dish_name}}</li>
 	{{/each}}
-{{/if}}
+{{/unless}}	
+{{> saved/activate-saved}}
+
