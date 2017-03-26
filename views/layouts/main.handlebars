@@ -76,7 +76,7 @@
                  {{#unless featuredTabisActive}}
                     <form class="navbar-form" role="search">
                         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-                        <input type="text" name="search" placeholder="Search for..">
+                        <input type="text" class = "search-box" name="search" placeholder="Search for..">
                     </form>
                  {{/unless}}
                 </div>
@@ -89,38 +89,10 @@
 
     </div> <!--site-content-container-->
 
-    <!--Login Modal-->
-    <div class="modal fade" id = "loginModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Login to Magic Prawns</h4>
-              </div>
-              <div class="modal-body">
-                <!-- content goes here -->
-                <form>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" name = "useremail" id="useremail" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                    </div>
-                     <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <!-- Create New Crumb Modal -->
     <div class="modal fade" id = "createForm" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -130,15 +102,23 @@
               <form id="newCrumb-form">
                   <div class="form-group">
                     <label for="Restaurant">Restaurant</label>
-                    <input type="text" class="form-control" id="restaurant" placeholder="Find Restaurant">
+                    <input type="text" class="form-control" id="restaurant" placeholder="Find Restaurant" required>
                   </div>
                   <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near">
+                    <input type="text" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near" required>
                   </div>
                   <div class="form-group">
-                    <label for="dish">Dish</label>
-                    <input type="text" class="form-control" id="dish" placeholder="Dish or Drink">
+                    <label for="dish">Dish Name</label>
+                    <input type="text" class="form-control" id="dish" placeholder="Dish or Drink" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cuisine">Cuisine</label>
+                    <input type="text" class="form-control" id="cuisine" placeholder="Cuisine">
+                  </div>
+                  <div class="form-group">
+                    <label for="dish_image">Image URL</label>
+                    <input type="url" class="form-control" id="dish_image" placeholder="Image URL" pattern="https?://.+" required>
                   </div>
                   <div class="form-group">
                     <label for="rating">Rating</label>
@@ -151,25 +131,10 @@
                     </select>
                 </div>
                 
-                  <label class="checkbox-inline">
-                  <input type="checkbox" id="salty" value="salty"> Salty
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" id="spicy" value="spicy"> Spicy
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" id="sweet" value="sweet"> Sweet
-                    </label>
-                   <div class="form-group">
-                <label for="comment">Comment:</label>
-                 <textarea class="form-control" rows="3" id="comment"></textarea>
-                </div>
-                    <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" id="exampleInputFile">
-                    <p class="help-block">Example block-level help text here.</p>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                <label for="description">Description</label>
+                 <textarea class="form-control" rows="3" id="description"></textarea>
+        
+                  <button type="submit" class="btn btn-primary">SAVE</button>
                 </form>
           </div><!-- /.modal-body-->
           <div class="modal-footer">

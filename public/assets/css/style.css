@@ -32,8 +32,8 @@
   }
 }
 
-/* line 33, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
-input[type=text] {
+/* line 34, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.search-box input[type=text] {
   margin-top: 20px;
   width: 200px;
   box-sizing: border-box;
@@ -44,7 +44,7 @@ input[type=text] {
   color: #100c0a;
   padding: 12px;
   /* -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out; */
+	    transition: width 0.4s ease-in-out; */
 }
 
 /* input[type=text]:focus {
@@ -148,6 +148,29 @@ footer {
 
 /* line 5, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
 footer p {
+  margin-top: 10px;
+}
+
+/* line 3, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_forms.scss */
+.search-box {
+  margin-top: 20px;
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #100c0a;
+  padding: 12px;
+  /* -webkit-transition: width 0.4s ease-in-out;
+	    transition: width 0.4s ease-in-out; */
+}
+
+/* input[type=text]:focus {
+    width: 100%;
+}  */
+/* line 23, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_forms.scss */
+#newCrumb-form .btn-primary {
   margin-top: 10px;
 }
 

@@ -30,20 +30,24 @@
 }
 
 //Search box styles
-input[type=text] {
-	margin-top: 20px;
-    width: 200px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: $white;
-    color: $base-black;
-    padding: 12px;
-    /* -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out; */
+.search-box{
+	input[type=text] {
+		margin-top: 20px;
+	    width: 200px;
+	    box-sizing: border-box;
+	    border: 2px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 16px;
+	    background-color: $white;
+	    color: $base-black;
+	    padding: 12px;
+	    /* -webkit-transition: width 0.4s ease-in-out;
+	    transition: width 0.4s ease-in-out; */
+	}
 }
 
 /* input[type=text]:focus {
     width: 100%;
 }  */
+
+//New Crumb Form
