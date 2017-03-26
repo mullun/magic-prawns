@@ -276,4 +276,21 @@ module.exports = function(app) {
     });
   });
 
+// code to test best dishes in a particular restaurant
+  app.get("/dishesthisrestaurant/:restaurant/:zip_code", function(req, res){
+    db.Dish.findAll({
+      where: {
+        restaurant: req.params.restaurant,
+        zip_code: req.params.zip_code
+       },
+       order: [["rating", "DESC"]]
+    })
+    .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
+      // send list of all meals of user, most recent first
+      res.json(dbDish);
+    });
+  });
+
 };
