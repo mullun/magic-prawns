@@ -256,4 +256,24 @@ module.exports = function(app) {
     });
   });
 
+
+// code to test mydishes
+  app.get("/mydishes", function(req, res){
+    console.log("req.user.id");
+    console.log(req.user.id);
+    db.Meal.findAll({
+      where: {
+        UserId: req.user.id
+       },
+       include: [db.Dish],
+       order: [["createdAt", "DESC"]]
+    })
+    .then(function(dbMeal) {
+      console.log("dbMeal");
+      console.log(dbMeal);
+      // send list of all meals of user, most recent first
+      res.json(dbMeal);
+    });
+  });
+
 };
