@@ -39,32 +39,30 @@ module.exports = function(app){
     
 	});
 
-	// app.get("/featured", function(req, res){
- //  	db.Dish.findAll({
- //      order: [
- //        ["rating", "DESC"]
- //      ]
- //    }).then(function(dbDish){	
- //      console.log(dbDish)
- //      var hbsObject = {
- //  			Dish: dbDish,
- //  			featuredTabisActive: true
- //  		};
- //    });
-	// 	res.render("index", hbsObject);
-	// });
-
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the login page
-	app.get("/saved", isAuthenticated, function(req, res){
-		var hbsObject = {
-			Dish: "data",
-			savedTabisActive: true,
-			searchTerm: req.query.search
-		};
-		res.render("index", hbsObject);
 
-	});
+  app.get("/saved", function(req, res){
+    console.log("req.user.id: ");
+    console.log(req.user.id);
+    db.Meal.findAll({
+        where: {
+            UserId: req.user.id
+          },
+          include: [db.Dish]
+    }).then(function(dbMeal){
+        for(var i = 0; i < dbMeal.length; i++){
+          console.log("dbMeal "+i);
+          console.log(dbMeal[i]);
+        }
+        var hbsObject = {
+          Meal: dbMeal,
+          savedTabisActive: true
+        };
+        res.render("index", hbsObject);
+    });
+    
+  });
 
 	// When user clicks on the Sign up link, render the signup handlebars and override the default layout to use useraccount.hbs
 	app.get("/signup", function(req,res){

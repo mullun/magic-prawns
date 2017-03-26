@@ -1,1 +1,6 @@
-{{#if savedTabisActive}} class="active" {{/if}}
+{{#if savedTabisActive}} class="active" 
+<p>Saved Meals</p>
+{{#each Meal}}
+<li> {{this.Dish.dish_name}} | {{this.Dish.restaurant}} | {{this.rating}} | {{this.description}}</li>
+{{/each}}
+{{/if}}
