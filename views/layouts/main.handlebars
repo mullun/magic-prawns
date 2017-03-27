@@ -108,15 +108,18 @@
               <form id="newCrumb-form" method = "post" action = "/dish">
                   <div class="form-group">
                     <label for="Restaurant">Restaurant</label>
-                    <input type="text" class="form-control" id="restaurant" name = "restaurant" placeholder="Find Restaurant" required>
+                    <!-- <input type="text" class="form-control" id="restaurant" name = "restaurant" placeholder="Find Restaurant" required> -->
+                    <input type="text" class="form-control" id="restaurant" name = "restaurant" placeholder="Find Restaurant">
                   </div>
                   <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" name="zipcode" title = "Enter a 5 digit US zipcode" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near" required>
+                    <!-- <input type="text" name="zipcode" title = "Enter a 5 digit US zipcode" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near" required> -->
+                    <input type="text" name="zipcode" title = "Enter a 5 digit US zipcode" class="form-control" id="zipcode" placeholder="Near">
                   </div>
                   <div class="form-group">
                     <label for="dish">Dish Name</label>
-                    <input type="text" class="form-control" id="dish_name" name="dish_name" placeholder="Dish or Drink" required>
+                    <!-- <input type="text" class="form-control" id="dish_name" name="dish_name" placeholder="Dish or Drink" required> -->
+                    <input type="text" class="form-control" id="dish_name" name="dish_name" placeholder="Dish or Drink">
                   </div>
                   <div class="form-group">
                     <label for="cuisine">Cuisine</label>
@@ -124,7 +127,8 @@
                   </div>
                   <div class="form-group">
                     <label for="dish_image">Image URL</label>
-                    <input type="url" class="form-control" id="dish_image" name="dish_image" placeholder="Image URL" pattern="https?://.+" required>
+                    <!-- <input type="url" class="form-control" id="dish_image" name="dish_image" placeholder="Image URL" pattern="https?://.+" required> -->
+                    <input type="url" class="form-control" id="dish_image" name="dish_image" placeholder="Image URL">
                   </div>
                   <div class="form-group">
                     <label for="rating">Rating</label>

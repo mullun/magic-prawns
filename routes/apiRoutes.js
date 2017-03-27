@@ -132,7 +132,7 @@ module.exports = function(app) {
     //User Input validation
     req.checkBody('restaurant', 'Restaurant name is required').notEmpty();
     req.checkBody('zipcode', 'Zipcode is required').notEmpty();
-    req.checkBody('zipcode', 'Zip code is not valid').matches('zipcode', [0-9]{5});
+    /*req.checkBody('zipcode', 'Zip code is not valid').regex('[0-9]{5}');*/
     req.checkBody('dish_name', 'Dish name is required').notEmpty();
     req.checkBody('rating', 'Rating is required').notEmpty();
     req.checkBody('rating', 'Rating is not valid').isInt('rating', { min: 1, max: 5 });
