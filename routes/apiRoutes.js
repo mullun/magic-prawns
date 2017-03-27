@@ -4,12 +4,13 @@ var passport = require("../config/passport");
 module.exports = function(app) {
 
   //User Sign Up
+  // =============================================================
   app.post("/signup", function(req, res){
 
     var useremail = req.body.useremail;
     var password = req.body.password;
 
-    //User Email validation
+    //User Input validation
     req.checkBody('useremail', 'User Email is required').notEmpty();
     req.checkBody('useremail', 'Email is no valid').isEmail();
     req.checkBody('password', 'Password is required').notEmpty();
@@ -46,6 +47,7 @@ module.exports = function(app) {
   });
 
   //User Login
+  // =============================================================
   app.post('/login',
     // The login form is submitted to the server via the POST method. Using authenticate() with the local strategy will handle the login request.
      passport.authenticate('local', { successRedirect: '/saved',
@@ -58,6 +60,7 @@ module.exports = function(app) {
   });
 
   //User Logout
+  // =============================================================
   app.get('/logout', function(req, res){
     req.logout();
     req.flash("success_msg", "You have successfully logged out");
@@ -122,45 +125,70 @@ module.exports = function(app) {
     });
   });
 
+  // Create a new Dish
+  // =============================================================
   app.post("/dish", function(req, res){
-    db.Dish.findAll({
-      where: {
-        UserId: req.body.UserId,
-        dish_name: req.body.dish_name,
-        restaurant: req.body.restaurant,
-        zip_code: req.body.zip_code
-       }
-    })
-    .then(function(dbDish) {
-      if(dbDish.length===1){
-        //update meal table and average rating in dish table
-        var meal = {
-          dish_name: req.body.dish_name,
-          rating: req.body.rating,
-          description: req.body.description,
-          image: req.body.image
-         }
-        db.Meal.create(meal);
-      }else if(dbDish.length===0){
-       //update dishtable and then meal table
-        var dish = {
+
+    //User Input validation
+    req.checkBody('restaurant', 'Restaurant name is required').notEmpty();
+    req.checkBody('zipcode', 'Zipcode is required').notEmpty();
+    req.checkBody('zipcode', 'Zip code is not valid').matches('zipcode', [0-9]{5});
+    req.checkBody('dish_name', 'Dish name is required').notEmpty();
+    req.checkBody('rating', 'Rating is required').notEmpty();
+    req.checkBody('rating', 'Rating is not valid').isInt('rating', { min: 1, max: 5 });
+    //Set variable errors to pass to hbs object
+    var errors = req.validationErrors();
+
+    //Render the Signup page if errors exist, also pass the errors
+    if(errors){
+      var hbsObject = {
+      errors: errors
+      };
+
+      res.render("index", hbsObject);
+
+    }else{
+
+      db.Dish.findAll({
+        where: {
+          UserId: req.body.UserId,
           dish_name: req.body.dish_name,
           restaurant: req.body.restaurant,
-          zip_code: req.body.zip_code,
-          cuisine: req.body.cuisine,
-          avg_rating: req.body.rating
-        };
-        var meal = {
-          dish_name: req.body.dish_name,
-          rating: req.body.rating,
-          description: req.body.description,
-          image: req.body.image
-        };
-        db.Dish.create(dish);
-        db.Meal.create(meal);
-      }
-        // res.json(dbDish);
-      });
+          zip_code: req.body.zip_code
+         }
+      })
+      .then(function(dbDish) {
+        if(dbDish.length===1){
+          //update meal table and average rating in dish table
+          var meal = {
+            dish_name: req.body.dish_name,
+            rating: req.body.rating,
+            description: req.body.description,
+            image: req.body.dish_image
+           }
+          db.Meal.create(meal);
+        }else if(dbDish.length===0){
+         //update dishtable and then meal table
+          var dish = {
+            dish_name: req.body.dish_name,
+            restaurant: req.body.restaurant,
+            zip_code: req.body.zipcode,
+            cuisine: req.body.cuisine,
+            avg_rating: req.body.rating
+          };
+          var meal = {
+            dish_name: req.body.dish_name,
+            rating: req.body.rating,
+            description: req.body.description,
+            image: req.body.dish_image
+          };
+          db.Dish.create(dish);
+          db.Meal.create(meal);
+        }
+          // res.json(dbDish);
+        });
+    }
+
   });
 
 

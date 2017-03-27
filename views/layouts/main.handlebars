@@ -99,30 +99,36 @@
             <h4 class="modal-title">New Crumb</h4>
           </div>
           <div class="modal-body">
-              <form id="newCrumb-form">
+          {{!-- Here we are looping through the errors from the apiRoutes and displaying them to the user using bootstrap alerts --}}
+          {{#if errors}}
+            {{#each errors}}
+              <div class = "alert alert-danger">{{msg}}</div>
+            {{/each}}
+          {{/if}}
+              <form id="newCrumb-form" method = "post" action = "/dish">
                   <div class="form-group">
                     <label for="Restaurant">Restaurant</label>
-                    <input type="text" class="form-control" id="restaurant" placeholder="Find Restaurant" required>
+                    <input type="text" class="form-control" id="restaurant" name = "restaurant" placeholder="Find Restaurant" required>
                   </div>
                   <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near" required>
+                    <input type="text" name="zipcode" title = "Enter a 5 digit US zipcode" pattern="[0-9]{5}" class="form-control" id="zipcode" placeholder="Near" required>
                   </div>
                   <div class="form-group">
                     <label for="dish">Dish Name</label>
-                    <input type="text" class="form-control" id="dish" placeholder="Dish or Drink" required>
+                    <input type="text" class="form-control" id="dish_name" name="dish_name" placeholder="Dish or Drink" required>
                   </div>
                   <div class="form-group">
                     <label for="cuisine">Cuisine</label>
-                    <input type="text" class="form-control" id="cuisine" placeholder="Cuisine">
+                    <input type="text" class="form-control" id="cuisine" name="cuisine" placeholder="Cuisine">
                   </div>
                   <div class="form-group">
                     <label for="dish_image">Image URL</label>
-                    <input type="url" class="form-control" id="dish_image" placeholder="Image URL" pattern="https?://.+" required>
+                    <input type="url" class="form-control" id="dish_image" name="dish_image" placeholder="Image URL" pattern="https?://.+" required>
                   </div>
                   <div class="form-group">
                     <label for="rating">Rating</label>
-                      <select id = "rating" class="form-control">
+                      <select id = "rating" name="rating" class="form-control" required>
                           <option value="1">1 NAY!</option>
                           <option value="2">2</option>
                           <option value = "3">3 MEH!</option>
@@ -132,7 +138,7 @@
                 </div>
                 
                 <label for="description">Description</label>
-                 <textarea class="form-control" rows="3" id="description"></textarea>
+                 <textarea class="form-control" rows="3" name="description" id="description"></textarea>
         
                   <button type="submit" class="btn btn-primary">SAVE</button>
                 </form>
