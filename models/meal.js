@@ -14,9 +14,9 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		image: {
 			type: DataTypes.STRING,
-			validate: {
-				isUrl: true
-			}
+			// validate: {  // removed for testing purposes
+			// 	isUrl: true
+			// }
 		}
 	},
 		{

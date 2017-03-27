@@ -125,6 +125,7 @@ module.exports = function(app) {
     });
   });
 
+<<<<<<< HEAD
   // Create a new Dish
   // =============================================================
   app.post("/dish", function(req, res){
@@ -149,47 +150,176 @@ module.exports = function(app) {
 
     }else{
 
-      db.Dish.findAll({
-        where: {
-          UserId: req.body.UserId,
-          dish_name: req.body.dish_name,
-          restaurant: req.body.restaurant,
-          zip_code: req.body.zip_code
-         }
-      })
-      .then(function(dbDish) {
-        if(dbDish.length===1){
-          //update meal table and average rating in dish table
-          var meal = {
-            dish_name: req.body.dish_name,
-            rating: req.body.rating,
-            description: req.body.description,
-            image: req.body.dish_image
-           }
-          db.Meal.create(meal);
-        }else if(dbDish.length===0){
-         //update dishtable and then meal table
-          var dish = {
-            dish_name: req.body.dish_name,
-            restaurant: req.body.restaurant,
-            zip_code: req.body.zipcode,
-            cuisine: req.body.cuisine,
-            avg_rating: req.body.rating
-          };
-          var meal = {
-            dish_name: req.body.dish_name,
-            rating: req.body.rating,
-            description: req.body.description,
-            image: req.body.dish_image
-          };
-          db.Dish.create(dish);
-          db.Meal.create(meal);
-        }
-          // res.json(dbDish);
+      console.log("req.user.id");
+    console.log(req.user.id);
+    db.Dish.findOne({
+      where: {
+        dish_name: req.body.dish_name,
+        restaurant: req.body.restaurant,
+        zip_code: req.body.zip_code
+       }
+    })
+    .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
+      if(dbDish){
+        //update meal table and average rating in dish table
+        console.log("existing dish");
+        console.log(dbDish.dataValues.id);
+        var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
+        var dish_rating = dbDish.dataValues.rating;
+        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        console.log("creating new meal")
+        db.Meal.create({
+          rating: parseInt(req.body.rating),
+          description: req.body.description,
+          image: req.params.image,
+          DishId: dish_id,
+          UserId: req.user.id
+        }).then(function(dbMealNew){
+          console.log("updating dish rating");
+        // update average rating in Dish Table
+          db.Dish.update(
+            {rating : parseInt(newRating)},
+            {where:{id:dish_id}}
+            )
         });
-    }
+        res.redirect("/saved");
+      } 
+      else if(!dbDish) {  // dish being sent is new
+       //update dishtable and then meal table
+       console.log("creating unique dish");
+        db.Dish.create ({
+          dish_name: req.body.dish_name,
+          restaurant: req.params.restaurant,
+          zip_code: req.params.zip_code,
+          cuisine: req.params.cuisine,
+          rating: parseInt(req.params.rating)
+        }).then(function(dbDishNew) {
+          console.log("created new dish");
+          console.log("dbDishNew.id");
+          console.log(dbDishNew.id);
+          console.log("user before new meal");
+          console.log(req.user.id);
+          db.Meal.create({
+            UserId:req.user.id,
+            DishId:dbDishNew.id,
+            rating: parseInt(req.body.rating),
+            description: req.body.description,
+            image: req.body.image
+          }).then(function(dbMealNew) {
+            res.redirect("/saved");
+          })
+        })
+      }
+    });
+  }
+});
 
+
+
+
+  app.get("/dish/:cuisine/:desc/:dishName/:img/:rating/:restName/:zip", function(req, res){
+    console.log("req.user.id");
+    console.log(req.user.id);
+    db.Dish.findOne({
+      where: {
+        dish_name: req.params.dishName,
+        restaurant: req.params.restName,
+        zip_code: req.params.zip
+       }
+    })
+    .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
+      if(dbDish){
+        //update meal table and average rating in dish table
+        console.log("existing dish");
+        console.log(dbDish.dataValues.id);
+        var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
+        var dish_rating = dbDish.dataValues.rating;
+        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        console.log("creating new meal")
+        db.Meal.create({
+          rating: parseInt(req.params.rating),
+          description: req.params.desc,
+          image: req.params.img,
+          DishId: dish_id,
+          UserId: req.user.id
+        }).then(function(dbMealNew){
+          console.log("updating dish rating");
+          db.Dish.update(
+            {rating : parseInt(newRating)},
+            {where:{id:dish_id}}
+            )
+        });
+        // update average rating in Dish Table
+        res.redirect("/saved");
+      } 
+      else if(!dbDish) {  // dish being sent is new
+       //update dishtable and then meal table
+       console.log("creating unique dish");
+        db.Dish.create ({
+          dish_name: req.params.dishName,
+          restaurant: req.params.restName,
+          zip_code: req.params.zip,
+          cuisine: req.params.cuisine,
+          rating: parseInt(req.params.rating)
+        }).then(function(dbDishNew) {
+          console.log("created new dish");
+          console.log("dbDishNew.id");
+          console.log(dbDishNew.id);
+          console.log("user before new meal");
+          console.log(req.user.id);
+          db.Meal.create({
+            UserId:req.user.id,
+            DishId:dbDishNew.id,
+            rating: parseInt(req.params.rating),
+            description: req.params.desc,
+            image: req.params.img
+          }).then(function(dbMealNew) {
+            res.redirect("/saved");
+          })
+        })
+      }
+    });
   });
 
+
+// code to test mydishes
+  app.get("/mydishes", function(req, res){
+    console.log("req.user.id");
+    console.log(req.user.id);
+    db.Meal.findAll({
+      where: {
+        UserId: req.user.id
+       },
+       include: [db.Dish],
+       order: [["createdAt", "DESC"]]
+    })
+    .then(function(dbMeal) {
+      console.log("dbMeal");
+      console.log(dbMeal);
+      // send list of all meals of user, most recent first
+      res.json(dbMeal);
+    });
+  });
+
+// code to test best dishes in a particular restaurant
+  app.get("/dishesthisrestaurant/:restaurant/:zip_code", function(req, res){
+    db.Dish.findAll({
+      where: {
+        restaurant: req.params.restaurant,
+        zip_code: req.params.zip_code
+       },
+       order: [["rating", "DESC"]]
+    })
+    .then(function(dbDish) {
+      console.log("dbDish");
+      console.log(dbDish);
+      // send list of all meals of user, most recent first
+      res.json(dbDish);
+    });
+  });
 
 };

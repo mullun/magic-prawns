@@ -1,1 +1,6 @@
-{{#if savedTabisActive}} class="active" {{/if}}
+{{#if savedTabisActive}} 
+<div class="col-md-2">Dish</div><div class="col-md-2">Restaurant</div><div class="col-md-2">Zip Code</div><div class="col-md-2">Rating</div><div class="col-md-2">Description</div>
+{{#each Meal}}
+<li><div class="col-md-2">{{this.Dish.dish_name}}</div><div class="col-md-2">{{this.Dish.restaurant}}</div><div>{{this.Dish.zip_code}}</div><div class="col-md-2">{{this.rating}}</div><div class="col-md-2">{{this.description}}</div></li>
+{{/each}}
+{{/if}}
