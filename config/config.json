@@ -2,7 +2,7 @@
   "development": {
     "port": 3306,
     "username": "root",
-    "password": "root",
+    "password": "abcdef#1",
     "database": "dishes_db",
     "host": "localhost",
     "dialect": "mysql"

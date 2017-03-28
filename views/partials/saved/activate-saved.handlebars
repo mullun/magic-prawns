@@ -1,6 +1,14 @@
-{{#if savedTabisActive}} 
-<div class="col-md-2">Dish</div><div class="col-md-2">Restaurant</div><div class="col-md-2">Zip Code</div><div class="col-md-2">Rating</div><div class="col-md-2">Description</div>
+{{#if savedTabisActive}}
+<section class="container">
+<table class="table table-striped">
+	<tr> 
+		<th class="col-md-1">Rating</th><th class="col-md-2">Image</th><th class="col-md-2">Dish</th><th class="col-md-2">Restaurant</th><th class="col-md-2">Zip Code</th><th class="col-md-3">Description</th>
+	</tr>
 {{#each Meal}}
-<li><div class="col-md-2">{{this.Dish.dish_name}}</div><div class="col-md-2">{{this.Dish.restaurant}}</div><div>{{this.Dish.zip_code}}</div><div class="col-md-2">{{this.rating}}</div><div class="col-md-2">{{this.description}}</div></li>
+	<tr>
+		<td class="col-md-1">{{this.rating}}</td><td class="col-md-2"><img class="img-rounded img-responsive" src="{{this.image}}" alt="{{this.Dish.dish_name}}"></td><td class="col-md-2">{{this.Dish.dish_name}}</td><td class="col-md-2">{{this.Dish.restaurant}}</td><td class="col-md-2">{{this.Dish.zip_code}}</td><td class="col-md-3">{{this.description}}</td>
+	</tr>
 {{/each}}
+</table>
+</section>
 {{/if}}
