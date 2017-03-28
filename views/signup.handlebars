@@ -1,4 +1,5 @@
 <h4 class = "text-center useraccount">Sign Up with your email address</h4>
+<br >
 
 {{!-- Here we are looping through the errors from the apiRoutes and displaying them to the user using bootstrap alerts --}}
 {{#if errors}}
@@ -7,19 +8,22 @@
 	{{/each}}
 {{/if}}
 
-<div class = "row">
-	<div class = "col-md-offset-4 col-md-4 well">
+<div class = "row signup-container">
+	<div class = "col-md-offset-4 col-md-4">
 		<form class= "signup-form" method = "post" action = "/signup">
 			<div class="form-group">
 		        <label for="email">Email address</label>
-		        <input type="email" class="form-control" name = "useremail" id="useremail" placeholder="Email">
+		        <input type="email" class="form-control input-lg" name = "useremail" id="useremail" placeholder="Email">
 		    </div>
 		    <div class="form-group">
 		        <label for="password">Password</label>
-		        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+		        <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password">
 		    </div>
 
-		     <button type="submit" class="btn btn-primary">SIGN UP</button>
+		     <button type="submit" class="btn btn-primary rounded-btn useraccount-btn center-block">SIGN UP</button>
+			
+			<br >
+		     <p class ="text-center"><a href="/">&nbsp; Magic Prawns Home</a></p>
 
 		</form>
 		

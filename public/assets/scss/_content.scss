@@ -39,10 +39,27 @@
 //Button styles
 .rounded-btn{
 	text-transform: uppercase;
-	border-radius: 40px;
+	border-radius: 30px;
+}
+.get-magic{
 	padding: 20px;
 	font-size: $rem-base;
 	background-color: $brand-secondary;
+}
+.useraccount-btn{
+	padding: 10px 60px;
+	margin-top: 20px;
+	font-weight: bold;
+	background-color: $btn-color;
+}
+
+.login-container, .signup-container{
+	font-family: 'Nunito', sans-serif;
+	font-size: $rem-base;
+
+	a{
+		color: $btn-color;
+	}
 }
 
 

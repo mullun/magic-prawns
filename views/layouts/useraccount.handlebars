@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" sizes="16x16 32x32" href="/prawn.ico">
+
 	<title>{{title}}</title>
 
     <!-- Reset CSS -->
@@ -15,16 +17,18 @@
     
     <!-- Custom fonts -->
     <link href="/assets/ext/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nova+Oval|Nunito" rel="stylesheet">
 
 </head>
 <body>
     
     <div class = "container">
         <div class="page-header">
-            <h1 class = "text-center">Magic Prawns</h1>
+            <img src = "/assets/images/prawn.png" class="text-center logo" alt-="logo" />
+            <h1 class = "page-head text-center">Magic Prawns</h1>
         </div>
 
         {{!-- Post flash messages here --}}
@@ -44,10 +48,11 @@
 
     </div>
 
-	 <footer>
+	 <footer class="useraccount-footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-offset-4 col-md-4">
+                <hr >
                     <p class="text-muted"><span class="copyright">Copyright &copy; MagicPrawns 2017</span></p>
                 </div>
             </div>

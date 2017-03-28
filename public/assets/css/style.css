@@ -42,10 +42,33 @@
 /* line 40, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
 .rounded-btn {
   text-transform: uppercase;
-  border-radius: 40px;
+  border-radius: 30px;
+}
+
+/* line 44, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.get-magic {
   padding: 20px;
   font-size: 18px;
   background-color: #ffb14b;
+}
+
+/* line 49, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.useraccount-btn {
+  padding: 10px 60px;
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: #1ed760;
+}
+
+/* line 56, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.login-container, .signup-container {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+}
+
+/* line 60, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.login-container a, .signup-container a {
+  color: #1ed760;
 }
 
 /* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
@@ -153,6 +176,17 @@
   color: #fff;
 }
 
+/* line 96, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
+.page-head {
+  font-family: 'Nova Oval', cursive;
+}
+
+/*.page-header{
+	display: inline-block;
+	img{
+		display: inline-block;
+	}
+} */
 /* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
 footer {
   background-color: #4bd2ff;
@@ -164,6 +198,11 @@ footer {
 /* line 5, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
 footer p {
   margin-top: 10px;
+}
+
+/* line 11, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_footer.scss */
+.useraccount-footer {
+  background-color: #fff;
 }
 
 /* line 3, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_forms.scss */
