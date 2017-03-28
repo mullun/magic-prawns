@@ -125,7 +125,6 @@ module.exports = function(app) {
     });
   });
 
-<<<<<<< HEAD
   // Create a new Dish
   // =============================================================
   app.post("/dish", function(req, res){
@@ -150,13 +149,13 @@ module.exports = function(app) {
 
     }else{
 
-      console.log("req.user.id");
+    console.log("req.user.id");
     console.log(req.user.id);
     db.Dish.findOne({
       where: {
         dish_name: req.body.dish_name,
         restaurant: req.body.restaurant,
-        zip_code: req.body.zip_code
+        zip_code: req.body.zipcode
        }
     })
     .then(function(dbDish) {
@@ -168,12 +167,12 @@ module.exports = function(app) {
         console.log(dbDish.dataValues.id);
         var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
         var dish_rating = dbDish.dataValues.rating;
-        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        var newRating = (parseInt(dish_rating) + parseInt(req.body.rating)) / 2;
         console.log("creating new meal")
         db.Meal.create({
           rating: parseInt(req.body.rating),
           description: req.body.description,
-          image: req.params.image,
+          image: req.body.dish_image,
           DishId: dish_id,
           UserId: req.user.id
         }).then(function(dbMealNew){
@@ -191,10 +190,14 @@ module.exports = function(app) {
        console.log("creating unique dish");
         db.Dish.create ({
           dish_name: req.body.dish_name,
-          restaurant: req.params.restaurant,
-          zip_code: req.params.zip_code,
+          /*restaurant: req.params.restaurant,
+          zip_code: req.params.zipcode,
           cuisine: req.params.cuisine,
-          rating: parseInt(req.params.rating)
+          rating: parseInt(req.params.rating)*/
+          restaurant: req.body.restaurant,
+          zip_code: req.body.zipcode,
+          cuisine: req.body.cuisine,
+          rating: parseInt(req.body.rating)
         }).then(function(dbDishNew) {
           console.log("created new dish");
           console.log("dbDishNew.id");
@@ -206,7 +209,7 @@ module.exports = function(app) {
             DishId:dbDishNew.id,
             rating: parseInt(req.body.rating),
             description: req.body.description,
-            image: req.body.image
+            image: req.body.dish_image
           }).then(function(dbMealNew) {
             res.redirect("/saved");
           })
@@ -215,9 +218,6 @@ module.exports = function(app) {
     });
   }
 });
-
-
-
 
   app.get("/dish/:cuisine/:desc/:dishName/:img/:rating/:restName/:zip", function(req, res){
     console.log("req.user.id");
