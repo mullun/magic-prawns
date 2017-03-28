@@ -39,6 +39,18 @@
 	}
 }
 
+.brand-head{
+	margin:0;
+	display: inline-block;
+}
+.navbar-brand{
+	display: inline-block;
+	img{
+		display: inline-block;
+		width: 30px;
+	}
+}
+
 .navbar-default{
 	border: none;
 }

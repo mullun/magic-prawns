@@ -1,19 +1,30 @@
-<h4 class = "text-center useraccount">Login with your email address</h4>
+<h4 class = "useraccount">Login with your email address</h4>
 
 <div class = "row">
-	<div class = "col-md-offset-4 col-md-4 well">
-		<form method = "post" class= "login-form" action = "/login">
-			<div class="form-group">
-		        <label for="email">Email address</label>
-		        <input type="email" class="form-control" name = "useremail" id="useremail" placeholder="Email">
-		    </div>
-		    <div class="form-group">
-		        <label for="password">Password</label>
-		        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-		    </div>
+	<div class="col-xs-6 col-sm-6 col-md-6">
+		<div class = "well">
+			<form method = "post" class= "login-form" action = "/login">
+				<div class="form-group">
+			        <label for="email">Email address</label>
+			        <input type="email" class="form-control" name = "useremail" id="useremail" placeholder="Email">
+			    </div>
+			    <div class="form-group">
+			        <label for="password">Password</label>
+			        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+			    </div>
 
-		     <button type="submit" class="btn btn-primary">LOGIN</button>
+			     <button type="submit" class="btn btn-primary">LOGIN</button>
 
-		</form>
-	</div><!-- ./col-md -->
+			</form>
+		</div><!-- ./well -->
+	</div> <!-- ./col-xs- -->
+	<div class="col-xs-6 col-sm-6 col-md-6">
+		<p class="lead">Register now for <span class="text-success">FREE</span></p>
+                      <ul class="list-unstyled" style="line-height: 2">
+                          <li><span class="fa fa-check text-success"></span> Explore dishes with higher average rating and restaurants that serve them </li>
+                          <li><span class="fa fa-check text-success"></span> Search through your saved Crumbs</li>
+                          <li><span class="fa fa-check text-success"></span> Save your favorite meals</li>                     
+                      </ul>
+                      <p><a href="/signup" class="btn btn-info btn-block">Yes please, register now!</a></p>
+	</div> <!-- ./col-xs- -->
 </div> <!-- ./row -->
