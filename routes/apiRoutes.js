@@ -1,6 +1,9 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = function(app) {
 
   //User Sign Up
@@ -62,7 +65,7 @@ module.exports = function(app) {
   //User Logout
   // =============================================================
   app.get('/logout', function(req, res){
-    req.logout();
+    req.logOut();
     req.flash("success_msg", "You have successfully logged out");
     res.redirect('/login');
   });
@@ -109,40 +112,28 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/signup", function(req, res){
-    db.User.findOne({
-      where: {
-        user_name: req.body.user_name
-      }
-    })
-    .then(function(dbUser){
-      if(dbUser.length===0){
-        db.User.create(req.body);
-        res.redirect("/");
-      }else{
-        return null;
-      }
-    });
-  });
 
   // Create a new Dish
   // =============================================================
-  app.post("/dish", function(req, res){
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the login page
+  app.post("/dish", isAuthenticated, function(req, res){
 
     //User Input validation
     req.checkBody('restaurant', 'Restaurant name is required').notEmpty();
     req.checkBody('zipcode', 'Zipcode is required').notEmpty();
-    /*req.checkBody('zipcode', 'Zip code is not valid').regex('[0-9]{5}');*/
     req.checkBody('dish_name', 'Dish name is required').notEmpty();
     req.checkBody('rating', 'Rating is required').notEmpty();
     req.checkBody('rating', 'Rating is not valid').isInt('rating', { min: 1, max: 5 });
+    req.checkBody('dish_image', 'Image_URL is required').notEmpty();
     //Set variable errors to pass to hbs object
     var errors = req.validationErrors();
 
     //Render the Signup page if errors exist, also pass the errors
     if(errors){
       var hbsObject = {
-      errors: errors
+      errors: errors,
+      showModal : true
       };
 
       res.render("index", hbsObject);
