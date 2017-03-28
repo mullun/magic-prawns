@@ -1,15 +1,19 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = function(app) {
 
   //User Sign Up
+  // =============================================================
   app.post("/signup", function(req, res){
 
     var useremail = req.body.useremail;
     var password = req.body.password;
 
-    //User Email validation
+    //User Input validation
     req.checkBody('useremail', 'User Email is required').notEmpty();
     req.checkBody('useremail', 'Email is no valid').isEmail();
     req.checkBody('password', 'Password is required').notEmpty();
@@ -46,6 +50,7 @@ module.exports = function(app) {
   });
 
   //User Login
+  // =============================================================
   app.post('/login',
     // The login form is submitted to the server via the POST method. Using authenticate() with the local strategy will handle the login request.
      passport.authenticate('local', { successRedirect: '/saved',
@@ -58,8 +63,9 @@ module.exports = function(app) {
   });
 
   //User Logout
+  // =============================================================
   app.get('/logout', function(req, res){
-    req.logout();
+    req.logOut();
     req.flash("success_msg", "You have successfully logged out");
     res.redirect('/login');
   });
@@ -106,31 +112,41 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/signup", function(req, res){
-    db.User.findOne({
-      where: {
-        user_name: req.body.user_name
-      }
-    })
-    .then(function(dbUser){
-      if(dbUser.length===0){
-        db.User.create(req.body);
-        res.redirect("/");
-      }else{
-        return null;
-      }
-    });
-  });
 
-// user sends a dish to store in database
-  app.post("/dish", function(req, res){
+  // Create a new Dish
+  // =============================================================
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the login page
+  app.post("/dish", isAuthenticated, function(req, res){
+
+    //User Input validation
+    req.checkBody('restaurant', 'Restaurant name is required').notEmpty();
+    req.checkBody('zipcode', 'Zipcode is required').notEmpty();
+    req.checkBody('dish_name', 'Dish name is required').notEmpty();
+    req.checkBody('rating', 'Rating is required').notEmpty();
+    req.checkBody('rating', 'Rating is not valid').isInt('rating', { min: 1, max: 5 });
+    req.checkBody('dish_image', 'Image_URL is required').notEmpty();
+    //Set variable errors to pass to hbs object
+    var errors = req.validationErrors();
+
+    //Render the Signup page if errors exist, also pass the errors
+    if(errors){
+      var hbsObject = {
+      errors: errors,
+      showModal : true
+      };
+
+      res.render("index", hbsObject);
+
+    }else{
+
     console.log("req.user.id");
     console.log(req.user.id);
     db.Dish.findOne({
       where: {
         dish_name: req.body.dish_name,
         restaurant: req.body.restaurant,
-        zip_code: req.body.zip_code
+        zip_code: req.body.zipcode
        }
     })
     .then(function(dbDish) {
@@ -142,12 +158,12 @@ module.exports = function(app) {
         console.log(dbDish.dataValues.id);
         var dish_id = dbDish.dataValues.id;  // get the ID of the dish from table
         var dish_rating = dbDish.dataValues.rating;
-        var newRating = (parseInt(dish_rating) + parseInt(req.params.rating)) / 2;
+        var newRating = (parseInt(dish_rating) + parseInt(req.body.rating)) / 2;
         console.log("creating new meal")
         db.Meal.create({
           rating: parseInt(req.body.rating),
           description: req.body.description,
-          image: req.params.image,
+          image: req.body.dish_image,
           DishId: dish_id,
           UserId: req.user.id
         }).then(function(dbMealNew){
@@ -165,10 +181,14 @@ module.exports = function(app) {
        console.log("creating unique dish");
         db.Dish.create ({
           dish_name: req.body.dish_name,
-          restaurant: req.params.restaurant,
-          zip_code: req.params.zip_code,
+          /*restaurant: req.params.restaurant,
+          zip_code: req.params.zipcode,
           cuisine: req.params.cuisine,
-          rating: parseInt(req.params.rating)
+          rating: parseInt(req.params.rating)*/
+          restaurant: req.body.restaurant,
+          zip_code: req.body.zipcode,
+          cuisine: req.body.cuisine,
+          rating: parseInt(req.body.rating)
         }).then(function(dbDishNew) {
           console.log("created new dish");
           console.log("dbDishNew.id");
@@ -180,15 +200,15 @@ module.exports = function(app) {
             DishId:dbDishNew.id,
             rating: parseInt(req.body.rating),
             description: req.body.description,
-            image: req.body.image
+            image: req.body.dish_image
           }).then(function(dbMealNew) {
             res.redirect("/saved");
           })
         })
       }
     });
-  });
-
+  }
+});
 
   app.get("/dish/:cuisine/:desc/:dishName/:img/:rating/:restName/:zip", function(req, res){
     console.log("req.user.id");
