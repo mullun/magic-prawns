@@ -51,14 +51,16 @@ module.exports = function(app){
           },
           include: [db.Dish]
     }).then(function(dbMeal){
-        for(var i = 0; i < dbMeal.length; i++){
-          console.log("dbMeal "+i);
-          console.log(dbMeal[i]);
-        }
+        // for(var i = 0; i < dbMeal.length; i++){
+        //   console.log("dbMeal "+i);
+        //   console.log(dbMeal[i]);
+        // }
         var hbsObject = {
           Meal: dbMeal,
-          savedTabisActive: true
+          savedTabIsActive: true
         };
+        console.log("Saved tab is active:");
+        console.log(hbsObject.savedTabIsActive);
         res.render("index", hbsObject);
     });
     

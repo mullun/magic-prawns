@@ -163,6 +163,10 @@
   color: #ff574b;
 }
 
+td img {
+  max-height: 2%;
+}
+
 @media (min-width: 768px) {
   /* line 77, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
   .navbar .navbar-nav {
