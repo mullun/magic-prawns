@@ -3,9 +3,9 @@
 
 .masthead{
 	text-align: center;
-	color: $white;
-	background-color: $base-grey;
-	background: url(../images/foodplate.jpg);
+	background-color: $brand-secondary;
+	background-image: url(../images/masthead_bg1.jpg);
+	/* background-blend-mode: hard-light; */
 	background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
@@ -16,6 +16,7 @@
 	font-family: $sans-serif-font-family;
 
 	.masthead-content-visible{
+		color: $white;
 		h2{
 			letter-spacing: 1px;
 		}
@@ -44,7 +45,8 @@
 .get-magic{
 	padding: 20px;
 	font-size: $rem-base;
-	background-color: $brand-secondary;
+	background-color: $btn-color;
+	font-weight: bold;
 }
 .useraccount-btn{
 	padding: 10px 60px;
