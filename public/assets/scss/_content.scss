@@ -3,9 +3,9 @@
 
 .masthead{
 	text-align: center;
-	color: $white;
-	background-color: $base-grey;
-	background: url(../images/foodplate.jpg);
+	background-color: $brand-secondary;
+	background-image: url(../images/masthead_bg1.jpg);
+	/* background-blend-mode: hard-light; */
 	background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
@@ -16,6 +16,7 @@
 	font-family: $sans-serif-font-family;
 
 	.masthead-content-visible{
+		color: $white;
 		h2{
 			letter-spacing: 1px;
 		}
@@ -39,10 +40,28 @@
 //Button styles
 .rounded-btn{
 	text-transform: uppercase;
-	border-radius: 40px;
-	padding: 20px;
+	border-radius: 30px;
+}
+.get-magic{
+	padding: 15px;
 	font-size: $rem-base;
-	background-color: $brand-secondary;
+	background-color: $btn-color;
+	font-weight: bold;
+}
+.useraccount-btn{
+	padding: 10px 60px;
+	margin-top: 20px;
+	font-weight: bold;
+	background-color: $btn-color;
+}
+
+.login-container, .signup-container{
+	font-family: 'Nunito', sans-serif;
+	font-size: $rem-base;
+
+	a{
+		color: $btn-color;
+	}
 }
 
 

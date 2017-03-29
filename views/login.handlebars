@@ -1,30 +1,37 @@
-<h4 class = "useraccount">Login with your email address</h4>
+<h4 class = "useraccount text-center">Login with your email address</h4>
+<br >
 
-<div class = "row">
-	<div class="col-xs-6 col-sm-6 col-md-6">
-		<div class = "well">
+<div class = "row login-container">
+	<div class="col-md-offset-4 col-sm-4 col-md-4">
+		
 			<form method = "post" class= "login-form" action = "/login">
 				<div class="form-group">
 			        <label for="email">Email address</label>
-			        <input type="email" class="form-control" name = "useremail" id="useremail" placeholder="Email">
+			        <input type="email" class="form-control input-lg" name = "useremail" id="useremail" placeholder="Email">
 			    </div>
 			    <div class="form-group">
 			        <label for="password">Password</label>
-			        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+			        <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password">
 			    </div>
 
-			     <button type="submit" class="btn btn-primary">LOGIN</button>
+			     <button type="submit" class="btn btn-primary rounded-btn useraccount-btn center-block">LOG IN</button>
 
 			</form>
-		</div><!-- ./well -->
-	</div> <!-- ./col-xs- -->
-	<div class="col-xs-6 col-sm-6 col-md-6">
+
+			<br />
+			<p class ="text-center">Don't have an account?<a href="/signup">&nbsp; Sign Up</a></p>
+
+			<p class ="text-center"><a href="/">&nbsp; Magic Prawns Home</a></p>
+
+		
+	</div> <!-- ./col-sm- -->
+	<!-- <div class="col-xs-6 col-sm-6 col-md-6">
 		<p class="lead">Register now for <span class="text-success">FREE</span></p>
-                      <ul class="list-unstyled" style="line-height: 2">
-                          <li><span class="fa fa-check text-success"></span> Explore dishes with higher average rating and restaurants that serve them </li>
-                          <li><span class="fa fa-check text-success"></span> Search through your saved Crumbs</li>
-                          <li><span class="fa fa-check text-success"></span> Save your favorite meals</li>                     
-                      </ul>
-                      <p><a href="/signup" class="btn btn-info btn-block">Yes please, register now!</a></p>
-	</div> <!-- ./col-xs- -->
+	                      <ul class="list-unstyled" style="line-height: 2">
+	                          <li><span class="fa fa-check text-success"></span> Explore dishes with higher average rating and restaurants that serve them </li>
+	                          <li><span class="fa fa-check text-success"></span> Search through your saved Crumbs</li>
+	                          <li><span class="fa fa-check text-success"></span> Save your favorite meals</li>                     
+	                      </ul>
+	                      <p><a href="/signup" class="btn btn-info btn-block">Yes please, register now!</a></p>
+	</div> ./col-xs- -->
 </div> <!-- ./row -->
