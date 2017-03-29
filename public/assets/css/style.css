@@ -51,7 +51,7 @@
 
 /* line 45, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
 .get-magic {
-  padding: 20px;
+  padding: 15px;
   font-size: 18px;
   background-color: #1ed760;
   font-weight: bold;
@@ -161,10 +161,6 @@
 /* line 71, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
 .fa-bookmark {
   color: #ff574b;
-}
-
-td img {
-  max-height: 2%;
 }
 
 @media (min-width: 768px) {
