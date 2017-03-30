@@ -7,6 +7,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var helpers = require('handlebars-helpers');
+var math = helpers.math();
 var expressValidator = require("express-validator");
 
 var cookieParser = require("cookie-parser");

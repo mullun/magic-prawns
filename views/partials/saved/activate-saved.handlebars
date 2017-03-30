@@ -1,6 +1,6 @@
 {{#if savedTabIsActive}}
 <section class="container">
-<table class="table table-striped">
+{{!-- <table class="table table-striped">
 	<thead>
 	<tr> 
 		<th class="col-md-1">Rating</th><th class="col-md-2">Image</th><th class="col-md-2">Dish</th><th class="col-md-2">Restaurant</th><th class="col-md-2">Zip Code</th><th class="col-md-3">Description</th>
@@ -13,6 +13,32 @@
 	</tr>
 {{/each}}
 	</tbody>
-</table>
+</table> --}}
+
+<div class = "row">
+		{{#each Meal}}	
+		<div class = "col-sm-6 col-md-4">
+			<div class="thumbnail">
+      			<img class="img-rounded img-responsive" src="{{this.image}}" alt="{{this.Dish.dish_name}}">
+      				<div class="caption">
+      					<ul class = "list-inline">
+      						<li><h3>{{this.Dish.dish_name}}&nbsp;&nbsp;</h3></li>
+
+      						<li><div class="star-ratings-css">
+  								<div class="star-ratings-css-top" style="width: {{multiply (divide this.rating 5) 100}}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+  								<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+								</div></li>
+      					</ul>
+      					<h5>RESTAURANT | {{this.Dish.restaurant}}, {{this.Dish.zip_code}} </h5>
+      					<p> Description: {{this.description}}</p>
+      				</div>{{!-- ./caption --}}
+    		</div>{{!-- ./thumbnail --}}
+		</div>{{!-- ./col-sm-6 --}}
+		{{/each}}
+	</div>{{!-- ./row --}}
+
+
+
+
 </section>
 {{/if}}
