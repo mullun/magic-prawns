@@ -10,20 +10,63 @@ module.exports = function(app){
 
 
   app.get("/", function(req, res){
-
+    
       db.Dish.findAll({
         include: [db.Meal]
       }).then(function(dbDish){
-        
+        console.log(req.query.search);
+
         var hbsObject = {
           Dish: dbDish,
           allTabisActive: true,
           searchTerm: req.query.search
         };
-        console.log()
-        res.render("index", hbsObject);
+
+        res.render("index", hbsObject);       
+       
       });
     
+  });
+
+  app.get("/search", function(req, res){
+
+    console.log(req.query.search);
+    //if user entered search term
+        if(req.query.search){
+          db.Dish.findAll({
+            where: {
+              $or: [
+                  {
+                      dish_name: 
+                      {
+                          $eq: req.query.search
+                      }
+                  }, 
+                  {
+                      restaurant: 
+                      {
+                          $eq: req.query.search
+                      }
+                  }
+              ]
+            },
+            include: [db.Meal]
+          }).then(function(dbSearchDish){
+           
+              var hbsObject = {
+                Dish: dbSearchDish,
+                allTabisActive: true,
+                searchTerm: req.query.search
+              };
+
+              res.render("index", hbsObject);     
+            
+
+          });
+        }else{
+          res.redirect("/");
+        }
+        
   });
 
 	app.get("/featured", function(req, res){
