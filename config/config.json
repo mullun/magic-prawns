@@ -16,11 +16,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "port": 3306,
-    "username": "root",
-    "password": "root",
-    "database": "dishes_db",
-    "host": "localhost",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
