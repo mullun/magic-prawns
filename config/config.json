@@ -1,20 +1,26 @@
 {
   "development": {
+    "port": 3306,
     "username": "root",
-    "password": "abcdef#1",
+    "password": "root",
     "database": "dishes_db",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
+    "port": 3306,
     "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "password": "root",
+    "database": "dishes_db",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "dishes_db",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }

@@ -76,6 +76,39 @@
   color: #1ed760;
 }
 
+/* Star rating */
+/* line 68, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+
+/* line 79, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.star-ratings-css .star-ratings-css-top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* line 89, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_content.scss */
+.star-ratings-css .star-ratings-css-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
+
 /* line 1, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
 .header {
   top: 0;
@@ -161,10 +194,6 @@
 /* line 71, C:/Users/JinZ/Documents/Coding Bootcamp/Coding Bootcamp/week_16/project2/magic-prawns/public/assets/scss/_header.scss */
 .fa-bookmark {
   color: #ff574b;
-}
-
-td img {
-  max-height: 3%;
 }
 
 @media (min-width: 768px) {

@@ -11,12 +11,16 @@ module.exports = function(app){
 
   app.get("/", function(req, res){
 
-      db.Dish.findAll({}).then(function(dbDish){
+      db.Dish.findAll({
+        include: [db.Meal]
+      }).then(function(dbDish){
+        
         var hbsObject = {
           Dish: dbDish,
           allTabisActive: true,
           searchTerm: req.query.search
         };
+        console.log()
         res.render("index", hbsObject);
       });
     
@@ -27,7 +31,8 @@ module.exports = function(app){
       db.Dish.findAll({
         order: [
           ["rating", "DESC"]
-        ]
+        ],
+        include: [db.Meal]
       }).then(function(dbDish){
     		var hbsObject = {
           Dish: dbDish,
