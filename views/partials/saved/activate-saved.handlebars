@@ -1,14 +1,18 @@
 {{#if savedTabIsActive}}
 <section class="container">
 <table class="table table-striped">
+	<thead>
 	<tr> 
 		<th class="col-md-1">Rating</th><th class="col-md-2">Image</th><th class="col-md-2">Dish</th><th class="col-md-2">Restaurant</th><th class="col-md-2">Zip Code</th><th class="col-md-3">Description</th>
 	</tr>
+	</thead>
+	<tbody>
 {{#each Meal}}
 	<tr>
 		<td class="col-md-1">{{this.rating}}</td><td class="col-md-2"><img class="img-rounded img-responsive" src="{{this.image}}" alt="{{this.Dish.dish_name}}"></td><td class="col-md-2">{{this.Dish.dish_name}}</td><td class="col-md-2">{{this.Dish.restaurant}}</td><td class="col-md-2">{{this.Dish.zip_code}}</td><td class="col-md-3">{{this.description}}</td>
 	</tr>
 {{/each}}
+	</tbody>
 </table>
 </section>
 {{/if}}

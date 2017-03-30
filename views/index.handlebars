@@ -1,16 +1,19 @@
-<p>Index will go here</p>
-<p>you searched for: {{searchTerm}}</p>
+
 {{#unless savedTabIsActive}}
 <section class="container">
-	<table class="table table-striped">	
+	<table class="table table-striped">
+	<thead>	
 	<tr>
 		<th class="col-md-3">Dish Rating</th><th class="col-md-3">Dish Name</th><th class="col-md-3">Restaurant</th><th class="col-md-3">Zip Code</th>
 	</tr>
+	</thead>
+	<tbody>
 	{{#each Dish}}	
 	<tr>
 		<td class="col-md-3">{{this.rating}}</td><td class="col-md-3">{{this.dish_name}}</td><td class="col-md-3">{{this.restaurant}}</td><td class="col-md-3">{{this.zip_code}}</td>
 	</tr>	
 	{{/each}}
+	</tbody>
 	</table>
 </section>	
 {{/unless}}	
