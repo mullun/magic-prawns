@@ -76,10 +76,13 @@ You can now navigate to 'localhost:8080/' to access Crumbs.
 
 ## Authors
 
+* **Guru** - *Initial work* 
+* **Max** - *Initial work* 
+* **James** - *Initial work* 
 * **Jincy George** - *Initial work* - [Jincy George](https://github.com)
-* **James** - *Initial work* - [Jincy George](https://github.com)
-* **Max** - *Initial work* - [Jincy George](https://github.com)
-* **Guru** - *Initial work* - [Jincy George](https://github.com)
+
+
+
 
 
 ## License
